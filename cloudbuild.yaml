@@ -6,17 +6,15 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/randomapp1']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', 'a${REVISION_ID}', '--image', 'gcr.io/$PROJECT_ID/randomapp1:${SHORT_SHA}', '--region', 'us-central1', '--platform',
+    args: ['run', 'deploy', 'a${SHORT_SHA}', '--image', 'gcr.io/$PROJECT_ID/randomapp1:${SHORT_SHA}', '--region', 'us-central1', '--platform',
             'managed', --port, '80', '--allow-unauthenticated' ]        
 
   - name: 'gcr.io/cloud-builders/gcloud:latest'
-    args: [ 'beta', 'run', 'domain-mappings', 'create', --region, 'us-central1', '--service', 'a${REVISION_ID}', '--domain', 'a${REVISION_ID}.billcentric.com']
+    args: [ 'beta', 'run', 'domain-mappings', 'create', --region, 'us-central1', '--service', 'a${SHORT_SHA}', '--domain', 'a${SHORT_SHA}.billcentric.com']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['dns', 'record-sets', 'create', 'a${REVISION_ID}', '--rrdatas', 'ghs.googlehosted.com',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
+    args: ['beta', dns', 'record-sets', 'transaction', 'add', 'ghs.googlehosted.com', '--name', 'a${SHORT_SHA}.billcentric',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
 
-
-   
 
 
 
