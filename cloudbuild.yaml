@@ -6,11 +6,11 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/randomapp1']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['run', 'deploy', '${$BUILD_ID}', '--image', 'gcr.io/$PROJECT_ID/randomapp1:${SHORT_SHA}', '--region', 'us-central1', '--platform',
+    args: ['run', 'deploy', '${BUILD_ID}', '--image', 'gcr.io/$PROJECT_ID/randomapp1:${SHORT_SHA}', '--region', 'us-central1', '--platform',
             'managed', --port, '80', '--allow-unauthenticated' ]
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'domain-mappings', 'create', '--service', '${$BUILD_ID}', '--domain','${$BUILD_ID}.billcentric.com']        
+    args: ['beta', 'run', 'domain-mappings', 'create', '--service', '${BUILD_ID}', '--domain','${$BUILD_ID}.billcentric.com']        
 
 
 
