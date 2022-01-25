@@ -11,7 +11,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud:latest'
     args: ['--version' ]          
 
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud:latest'
     args: [ 'beta', 'run', 'domain-mappings', 'create', --region, 'us-central1', '--service', 'a${REVISION_ID}', '--domain', 'a${REVISION_ID}.billcentric.com']
 
   - name: 'gcr.io/cloud-builders/gcloud'
