@@ -13,7 +13,7 @@ steps:
     args: [ 'beta', 'run', 'domain-mappings', 'create', --region, 'us-central1', '--service', 'a${SHORT_SHA}', '--domain', 'a${SHORT_SHA}.billcentric.com']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'dns', 'record-sets', 'transaction', 'add', 'ghs.googlehosted.com', '--name', 'a${SHORT_SHA}.billcentric',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
+    args: ['beta', 'dns', 'record-sets', 'transaction', 'add', 'ghs.googlehosted.com', '--name', 'a${SHORT_SHA}.billcentric.com',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
 
 
 
