@@ -13,7 +13,7 @@ steps:
     args: [ 'beta', 'run', 'domain-mappings', 'create', --region, 'us-central1', '--service', 'a${REVISION_ID}', '--domain', 'a${REVISION_ID}.billcentric.com']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['dns', 'record-sets', 'create', 'a${REVISION_ID}', '--rrdatas', 'ghs.googlehosted.com',--ttl, '300', '--type','CNAME', '--zone', 'billcentric"']
+    args: ['dns', 'record-sets', 'create', 'a${REVISION_ID}', '--rrdatas', 'ghs.googlehosted.com',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
 
 
    
