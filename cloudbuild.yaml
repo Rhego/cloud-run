@@ -19,6 +19,4 @@ steps:
     args: ['beta', 'dns', 'record-sets', 'transaction', 'add', 'ghs.googlehosted.com.', '--name', 'a${SHORT_SHA}.billcentric.com.',--ttl, '300', '--type','CNAME', '--zone', 'billcentric']
 
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'dns', 'record-sets', 'transaction', 'execute', '--zone', 'billcentric'] 
-
-
+    args: ['beta', 'dns', 'record-sets', 'transaction', 'execute', '--zone', 'billcentric']
