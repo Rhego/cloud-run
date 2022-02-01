@@ -10,7 +10,7 @@ app.config['MYSQL_DB'] = 'cloud_run_test'
  
 mysql = MySQL(app)
  
-@app.route('/form')
+@app.route('/')
 def form():
     return render_template('form.html')
  
