@@ -25,12 +25,12 @@ def form():
     PARAMS = {'address':location}
     
     # sending get request and saving the response as response object
-    r = requests.get(url = URL)
+    r = requests.get(url = URL, timeout=10)
     
 # extracting data in json format
     print(r.status_code)
     
-    return "GOOD "+ str(r.status_code )
+    return "GOOD "+ str(r.status_code )  + URL
  
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
