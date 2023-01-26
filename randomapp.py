@@ -1,5 +1,7 @@
 from flask import Flask,render_template, request
 from flask_mysqldb import MySQL
+import requests
+import jsonpickle
  
 app = Flask(__name__)
  
@@ -9,10 +11,26 @@ app.config['MYSQL_PASSWORD'] = 'cloudrun'
 app.config['MYSQL_DB'] = 'cloud_run_test'
  
 mysql = MySQL(app)
- 
+
+
 @app.route('/')
 def form():
-    return render_template('form.html')
+     # api-endpoint
+    URL = "http://192.168.111.15:9000"
+    
+    # location given here
+    location = "delhi technological university"
+    
+    # defining a params dict for the parameters to be sent to the API
+    PARAMS = {'address':location}
+    
+    # sending get request and saving the response as response object
+    r = requests.get(url = URL)
+    
+# extracting data in json format
+    print(r.status_code)
+    
+    return "GOOD "+ str(r.status_code )
  
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
